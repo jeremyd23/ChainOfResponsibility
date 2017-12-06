@@ -4,7 +4,7 @@ import model.Key;
 
 public interface DoorChain
 {
-    void setNextChain(DoorChain nextChain);
+    void setNextDoor(DoorChain nextDoor);
 
     void tryDoor(Key key);
 }

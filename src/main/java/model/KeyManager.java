@@ -22,4 +22,9 @@ public class KeyManager
     {
         return key.getvalue();
     }
+
+    public Key getKey()
+    {
+        return key;
+    }
 }

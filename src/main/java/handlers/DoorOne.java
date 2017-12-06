@@ -8,7 +8,7 @@ public class DoorOne implements DoorChain
     private DoorChain nextDoor;
 
     @Override
-    public void setNextChain(DoorChain nextDoor)
+    public void setNextDoor(DoorChain nextDoor)
     {
         this.nextDoor = nextDoor;
     }

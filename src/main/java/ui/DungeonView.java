@@ -37,6 +37,10 @@ public class DungeonView
         {
             group.getChildren().add(getChestButton());
         }
+        else if(url.equals("closed_doors_chest_open.png"))
+        {
+            group.getChildren().add(getKeyButton());
+        }
     }
 
     private Button getChestButton()
@@ -59,6 +63,27 @@ public class DungeonView
         chestButton.setLayoutY(488);
 
         return chestButton;
+    }
+
+    private Button getKeyButton()
+    {
+        Button keyButton = new Button();
+        keyButton.setStyle("-fx-background-image: url('key.png')");
+        keyButton.setPrefSize(50, 50);
+
+        keyButton.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                Controller.getInstance().openDoor();
+            }
+        });
+
+        keyButton.setLayoutX(450);
+        keyButton.setLayoutY(488);
+
+        return keyButton;
     }
 
     public Group getDungeon()

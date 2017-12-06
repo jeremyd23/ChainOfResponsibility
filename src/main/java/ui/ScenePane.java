@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.scene.Group;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -71,5 +72,10 @@ public class ScenePane
     public void setCenterPane(VBox box)
     {
         borderPane.setCenter(box);
+    }
+
+    public void setCenterPane(Group group)
+    {
+        borderPane.setCenter(group);
     }
 }

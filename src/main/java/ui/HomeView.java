@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import java.net.URL;
 
 public class HomeView
 {
@@ -15,10 +17,17 @@ public class HomeView
     private HBox menu;
     private Button button;
 
-    public VBox getStartButton()
+    public VBox getStartView()
     {
-        box = new VBox(20);
+        box = new VBox();
         box.setAlignment(Pos.CENTER);
+
+        String url = "closed_doors.png";
+
+        BackgroundImage background = new BackgroundImage(new Image(url,1040,
+                640, true, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        box.setBackground(new Background(background));
 
         Button button = new Button("Start");
         button.setMinHeight(40);
@@ -29,32 +38,11 @@ public class HomeView
         {
             public void handle(ActionEvent event)
             {
-                ScenePane.getInstance().setCenterPane(new DungeonView("closed_doors.png").getDungeon());
-                ScenePane.getInstance().setBottomPane(getMenu());
+                ScenePane.getInstance().setCenterPane(new DungeonView(url).getDungeon());
             }
         });
 
         box.getChildren().add(button);
         return box;
-    }
-
-    private HBox getMenu()
-    {
-        menu = new HBox(20);
-        menu.setAlignment(Pos.CENTER);
-
-        button = new Button("Open Box");
-        button.setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                ScenePane.getInstance().setCenterPane(new DungeonView("closed_doors_chest_open.png").getDungeon());
-            }
-        });
-
-        menu.getChildren().add(button);
-
-        return menu;
     }
 }

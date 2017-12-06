@@ -29,14 +29,14 @@ public class DungeonUI extends Application implements Observer
         ScenePane.getInstance().setTopPane(title);
 
         HomeView home = new HomeView();
-        ScenePane.getInstance().setCenterPane(home.getStartButton());
+        ScenePane.getInstance().setCenterPane(home.getStartView());
 
-        return new Scene(ScenePane.getInstance().getBorderPane(), 1040, 680);
+        return new Scene(ScenePane.getInstance().getBorderPane(), 1040, 640);
     }
 
     private HBox getTitle()
     {
-        HBox hBox = new HBox(10);
+        HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setStyle("-fx-background-color: #812121");
 

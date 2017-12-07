@@ -31,8 +31,6 @@ public class Controller
     public void addKey()
     {
         manager.addKey();
-
-        System.out.println(manager.getKeyValue());
     }
 
     public void openDoor()
@@ -49,7 +47,7 @@ public class Controller
 
     public void openLeftDoor()
     {
-        ScenePane.getInstance().setCenterPane(new DungeonView("left_door_open.png").getDungeon());
+        ScenePane.getInstance().setCenterPane(new DungeonView("Left_door_open.png").getDungeon());
     }
 
     public void openMiddleDoor()
@@ -60,5 +58,10 @@ public class Controller
     public void openRightDoor()
     {
         ScenePane.getInstance().setCenterPane(new DungeonView("right_door_open.png").getDungeon());
+    }
+
+    public void newRoom()
+    {
+        ScenePane.getInstance().setCenterPane(new DungeonView("closed_doors.png").getDungeon());
     }
 }

@@ -17,15 +17,16 @@ public class DungeonView
     {
         group = new Group();
         box = new HBox();
+        box.setPrefWidth(1040);
+        box.setPrefHeight(640);
 
         setDungeonView(url);
     }
 
     public void setDungeonView(String url)
     {
+        group.getChildren().clear();
 
-        box.setPrefWidth(1040);
-        box.setPrefHeight(640);
         BackgroundImage background = new BackgroundImage(new Image(url,1040,
                 640, true, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
@@ -40,6 +41,18 @@ public class DungeonView
         else if(url.equals("closed_doors_chest_open.png"))
         {
             group.getChildren().add(getKeyButton());
+        }
+        else if (url.equals("Left_door_open.png"))
+        {
+            group.getChildren().add(getLeftDoor());
+        }
+        else if (url.equals("middle_door_open.png"))
+        {
+            group.getChildren().add(getMiddleDoor());
+        }
+        else if (url.equals("right_door_open.png"))
+        {
+            group.getChildren().add(getRightDoor());
         }
     }
 
@@ -84,6 +97,69 @@ public class DungeonView
         keyButton.setLayoutY(488);
 
         return keyButton;
+    }
+
+    private Button getLeftDoor()
+    {
+        Button leftDoor = new Button();
+        leftDoor.setStyle("-fx-background-image: url('Left_door.png')");
+        leftDoor.setPrefSize(30, 45);
+
+        leftDoor.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                Controller.getInstance().newRoom();
+            }
+        });
+
+        leftDoor.setLayoutX(125);
+        leftDoor.setLayoutY(325);
+
+        return leftDoor;
+    }
+
+    private Button getMiddleDoor()
+    {
+        Button middleDoor = new Button();
+        middleDoor.setStyle("-fx-background-image: url('middle_door.png')");
+        middleDoor.setPrefSize(25, 25);
+
+        middleDoor.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                Controller.getInstance().newRoom();
+            }
+        });
+
+        middleDoor.setLayoutX(563);
+        middleDoor.setLayoutY(327);
+
+        return middleDoor;
+    }
+
+    private Button getRightDoor()
+    {
+        Button rightDoor = new Button();
+        rightDoor.setStyle("-fx-background-image: url('right_door.png')");
+        rightDoor.setPrefSize(50, 59);
+
+        rightDoor.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+               Controller.getInstance().newRoom();
+            }
+        });
+
+        rightDoor.setLayoutX(882); //was 875
+        rightDoor.setLayoutY(350); //was 355
+
+        return rightDoor;
     }
 
     public Group getDungeon()
